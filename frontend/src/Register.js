@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaUserAlt } from 'react-icons/fa';
 import "./componets/Global.css";
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
-const Register = ({ toggleRegisterForm }) => {
 
+const Register = ({ getUsers, onEdit, setOnEdit, toggleRegisterForm }) => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -20,12 +22,65 @@ const Register = ({ toggleRegisterForm }) => {
         });
     };
 
+
+
+    const ref = useRef();
+
+    useEffect(() => {
+      if (onEdit) {
+        const user = ref.current;
+  
+        user.nome.value = onEdit.nome;
+        user.email.value = onEdit.email;
+        user.fone.value = onEdit.fone;
+        user.data_nascimento.value = onEdit.data_nascimento;
+      }
+    }, [onEdit]);
+  
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log('Form Data:', formData);
-    };  
-
-
+      e.preventDefault();
+  
+      const user = ref.current;
+  
+      if (
+        !user.nome.value ||
+        !user.email.value ||
+        !user.fone.value ||
+        !user.data_nascimento.value
+      ) {
+        return toast.warn("Preencha todos os campos!");
+      }
+  
+      if (onEdit) {
+        await axios
+          .put("http://localhost:8800/" + onEdit.id, {
+            nome: user.nome.value,
+            email: user.email.value,
+            fone: user.fone.value,
+            data_nascimento: user.data_nascimento.value,
+          })
+          .then(({ data }) => toast.success(data))
+          .catch(({ data }) => toast.error(data));
+      } else {
+        await axios
+          .post("http://localhost:8800", {
+            nome: user.nome.value,
+            email: user.email.value,
+            fone: user.fone.value,
+            data_nascimento: user.data_nascimento.value,
+          })
+          .then(({ data }) => toast.success(data))
+          .catch(({ data }) => toast.error(data));
+      }
+  
+      user.nome.value = "";
+      user.email.value = "";
+      user.fone.value = "";
+      user.data_nascimento.value = "";
+  
+      setOnEdit(null);
+      getUsers();
+    };
 
     return (
         <div className="register">
