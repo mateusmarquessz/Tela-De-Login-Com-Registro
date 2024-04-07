@@ -21,7 +21,7 @@ function App() {
       ) : (
         <form className="login-form">
           <div className="textbox">
-            <input type="email" placeholder="Username" /> <span className="material-symbols-outlined">
+            <input type="email" placeholder="Email" /> <span className="material-symbols-outlined">
               <FaUser />
             </span>
           </div>
