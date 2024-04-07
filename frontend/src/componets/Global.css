@@ -1,0 +1,230 @@
+* {    box-sizing: border-box; }
+  
+  html, body {height: 100%;}
+  
+  @keyframes background {
+    100% {
+      background-size: 4000px 1000px;
+    }
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 24px;
+    background-image: url("Wave.svg");
+    background-size: 2000px 1000px;
+    background-position: -500px 0;
+    color: #f9f9f9;
+    font-family: "Euclid Circular A";
+    animation: background 10s infinite alternate linear; 
+  }
+  
+  @media (min-width: 500px) {
+    body {
+      padding: 0;
+    }
+  }
+  
+  .login {
+    width: 90%;
+    padding: 70px 30px 44px;
+    border-radius: 22px;
+    background: #333;
+    text-align: center;
+}
+
+@media (max-width: 450px) {
+    .login {
+        width: 380px;
+    }
+}
+
+
+.login > h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 4px;
+}
+
+.login > h3 {
+    color: rgba(255, 255, 255, 0.38);
+    margin: 30px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.login-form {
+    display: grid;
+    gap: 16px;
+    place-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.textbox {
+    width: 100%;
+    position: relative;
+}
+
+.textbox span {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.login-form input,
+.login-form button {
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.login-form input {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-size: 18px;
+    padding: 20px 50px; 
+    color: inherit;
+}
+
+.login-form input:focus {
+    border-color: #157ae1; 
+}
+
+.login-form input:focus ~ span {
+    color: #157ae1;
+}
+
+.login-form button {
+    cursor: pointer;
+    background: #157ae1;
+    color: #191919;
+    border: 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.login-form a {
+    color: #157ae1;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+}
+
+
+
+/* --------------------------------*/
+
+.register {
+    width: 90%;
+    padding: 70px 30px 44px;
+    border-radius: 22px;
+    background: #333;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.register > h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 4px;
+    color: #f9f9f9;
+}
+
+.register-form {
+    display: grid;
+    gap: 16px;
+    place-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.textbox {
+    width: 100%;
+    position: relative;
+}
+
+.textbox span {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.register-form input,
+.register-form button {
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #f9f9f9;
+}
+
+.register-form input[type="email"]::placeholder,
+.register-form input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    font-size: 18px;
+    padding: 20px 50px; 
+}
+
+.register-form input:focus {
+    border-color: #157ae1; 
+}
+
+.register-form input:focus ~ span {
+    color: #157ae1;
+}
+
+.register-form button {
+    cursor: pointer;
+    background: #157ae1;
+    color: #191919;
+    border: 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.register-form a {
+    color: #157ae1;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.textbox-group {
+    display: flex;
+  }
+  
+  .textbox-group .textbox {
+    flex: 1;
+    margin-right: 5px;
+  }
+  
+  .textbox-group .textbox:last-child {
+    margin-right: 0;
+  }
+  
+  .material-symbols-outlined {
+    display: flex;
+    align-items: center;
+  }
+  
