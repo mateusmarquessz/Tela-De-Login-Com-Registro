@@ -9,7 +9,6 @@ function App() {
 
   const toggleRegisterForm = () => {
     setShowRegisterForm(!showRegisterForm);
-    console.log("Deu certo!");
   }
 
 

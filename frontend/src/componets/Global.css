@@ -181,6 +181,7 @@
 }
 
 .register-form input[type="email"],
+.register-form input[type="name"],
 .register-form input[type="password"] {
     font-size: 18px;
     padding: 20px 50px; 
@@ -227,4 +228,3 @@
     display: flex;
     align-items: center;
   }
-  
