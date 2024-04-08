@@ -6,34 +6,16 @@ import axios from 'axios';
 
 
 const Register = ({ getUsers, onEdit, setOnEdit, toggleRegisterForm }) => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        birthDate: '',
-        password: ''
-    });
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-
-
     const ref = useRef();
 
     useEffect(() => {
       if (onEdit) {
         const user = ref.current;
   
-        user.nome.value = onEdit.nome;
-        user.email.value = onEdit.email;
-        user.fone.value = onEdit.fone;
-        user.data_nascimento.value = onEdit.data_nascimento;
+        user.Nome.value = onEdit.Nome;
+        user.Sobrenome.value = onEdit.Sobrenome;
+        user.Email.value = onEdit.Email;
+        user.DataNascimento.value = onEdit.DataNascimento;
       }
     }, [onEdit]);
   
@@ -43,10 +25,10 @@ const Register = ({ getUsers, onEdit, setOnEdit, toggleRegisterForm }) => {
       const user = ref.current;
   
       if (
-        !user.nome.value ||
-        !user.email.value ||
-        !user.fone.value ||
-        !user.data_nascimento.value
+        !user.Nome.value ||
+        !user.Sobrenome.value ||
+        !user.Email.value ||
+        !user.DataNascimento.value
       ) {
         return toast.warn("Preencha todos os campos!");
       }
@@ -54,29 +36,29 @@ const Register = ({ getUsers, onEdit, setOnEdit, toggleRegisterForm }) => {
       if (onEdit) {
         await axios
           .put("http://localhost:8800/" + onEdit.id, {
-            nome: user.nome.value,
-            email: user.email.value,
-            fone: user.fone.value,
-            data_nascimento: user.data_nascimento.value,
+            Nome: user.Nome.value,
+            Sobrenome: user.Sobrenome.value,
+            Email: user.Email.value,
+            DataNascimento: user.DataNascimento.value,
           })
           .then(({ data }) => toast.success(data))
           .catch(({ data }) => toast.error(data));
       } else {
         await axios
           .post("http://localhost:8800", {
-            nome: user.nome.value,
-            email: user.email.value,
-            fone: user.fone.value,
-            data_nascimento: user.data_nascimento.value,
+            Nome: user.Nome.value,
+            Sobrenome: user.Sobrenome.value,
+            Email: user.Email.value,
+            DataNascimento: user.DataNascimento.value,
           })
           .then(({ data }) => toast.success(data))
           .catch(({ data }) => toast.error(data));
       }
   
-      user.nome.value = "";
-      user.email.value = "";
-      user.fone.value = "";
-      user.data_nascimento.value = "";
+      user.Nome.value = "";
+      user.Sobrenome.value = "";
+      user.Email.value = "";
+      user.DataNascimento.value = "";
   
       setOnEdit(null);
       getUsers();
@@ -114,7 +96,7 @@ const Register = ({ getUsers, onEdit, setOnEdit, toggleRegisterForm }) => {
                     </span>
                 </div>
                 <button type="submit">REGISTER</button>
-                <a href="#" onClick={toggleRegisterForm}>Back to Login</a>
+                <a href="" onClick={toggleRegisterForm}>Back to Login</a>
             </form>
         </div>
     );
